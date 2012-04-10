@@ -6,6 +6,7 @@
 		<meta name="layout" content="cygnus-forms">
 		<g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<parameter name="pageEName" value="${domainClass.propertyName}" />
 	</head>
 	<body>
 		<a href="#edit-${domainClass.propertyName}" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -28,7 +29,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:formRemote name="cygnus${domainClass.propertyName}EditForm" update="pageContent" url="[controller:'${domainClass.propertyName}', action:'save']" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+			<g:formRemote name="cygnus${domainClass.propertyName}EditForm" update="pageContent" url="[controller:'${domainClass.propertyName}', action:'update']" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
 				<g:hiddenField name="id" value="\${${propertyName}?.id}" />
 				<g:hiddenField name="version" value="\${${propertyName}?.version}" />
 				<fieldset class="form">
