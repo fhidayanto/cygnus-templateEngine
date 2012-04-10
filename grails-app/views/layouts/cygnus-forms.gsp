@@ -12,19 +12,21 @@
 <title><g:layoutTitle default="Grails" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript">
-
+	
 </script>
-
+<g:javascript library="fgMenuResources" />
 <g:layoutHead />
 <r:layoutResources />
-
+<g:set var="eName"
+	value="${pageProperty(name:'page.pageEName')}"/>
 </head>
 <body>
-	
-	
-	<g:layoutBody />
-	
-	
+	<div id="leftMenu" >
+	<g:include controller="generateMenu" action="generateOnScreenMenu" params="[pos:'left',menuCode:eName]" />
+	</div>
+		<g:layoutBody />
+
+
 	<g:javascript library="application" />
 	<r:layoutResources />
 
